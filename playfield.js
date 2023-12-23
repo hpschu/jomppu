@@ -2,7 +2,7 @@ class PlayField {
     constructor(engine) {
         this.engine = engine;
         this.barrierOptions = {render: {strokeStyle: 'white'}, isStatic: true};
-        this.ballOptions = { isStatic: true, restitution: 0.9 , label: 'ball', render: { strokeStyle: 'darkBlue', lineWidth: 7, fillStyle: 'darkBlue'}};
+        this.ballOptions = { isStatic: true, restitution: 0.9 , label: 'ball', render: { strokeStyle: 'white', lineWidth: 3, fillStyle: 'darkBlue'}};
         this.ground = Bodies.rectangle(width/2, height-2, width, 20, { label: 'ground', isStatic: true });
         this.leftBorder = Bodies.rectangle(2, height/2, 20, height, { isStatic: true });
         this.rightBorder = Bodies.rectangle(width-2, height/2, 20, height, { isStatic: true });
