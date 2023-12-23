@@ -113,6 +113,10 @@ function getMousePosition(canvas, event) {
   let y = event.clientY - rect.top;
   console.log("Coordinate x: " + x,
       "Coordinate y: " + y);
+  playfield.setDropped(true);
+  if (event.detail == 2) {
+    playfield.newBall(35 + ((Math.sin(engine.timing.timestamp * 0.002) + 1) * 150));
+  }
 }
 
 let canvasElem = document.querySelector("canvas");
