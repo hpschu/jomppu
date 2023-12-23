@@ -32,7 +32,7 @@ var playfields = [
   function (engine) {return new PingPongField(engine)},
   function (engine) {return new MoveField(engine)},
 ];
-let stage = 3;
+let stage = 0;
 let playfield = playfields[stage](engine);
 
 // Ball hits floor
