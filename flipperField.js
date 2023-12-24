@@ -10,7 +10,7 @@ class FlipperField extends PlayField {
         var firstBar = Matter.Bodies.rectangle(width/2 + 35, height/4, width - width/3, 5, this.barrierOptions);
         Matter.Body.rotate(firstBar, 2.8);
 
-        var secondBar = Matter.Bodies.rectangle(width/3, height/4+150 , width/2, 5, this.barrierOptions);
+        var secondBar = Matter.Bodies.rectangle(width/3 - 10, height/4+150 , width/2, 5, this.barrierOptions);
         Matter.Body.rotate(secondBar, 0.3);
 
         Events.on(engine, 'beforeUpdate', function() {

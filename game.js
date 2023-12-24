@@ -10,9 +10,9 @@ var Engine = Matter.Engine,
 
 var width = 370;
 var height = 620;
-
 // create an engine
 var engine = Engine.create();
+var points = 0;
 
 // create a renderer
 var render = Render.create({
@@ -35,29 +35,65 @@ var playfields = [
 let stage = 0;
 let playfield = playfields[stage](engine);
 
+var lastCollision = Math.round(engine.timing.timestamp);
 // Ball hits floor
 Events.on(engine, 'collisionStart', function (event) {
   event.source.pairs.collisionStart.forEach((element) => {
-    console.log(element);
     if (element.bodyA.label == 'ball' || element.bodyB.label == 'ball') {
       if (element.bodyA.label == 'ground' || element.bodyB.label == 'ground') {
+        if (Math.round(engine.timing.timestamp) - lastCollision > 10) {
+          points = points > 0 ? points -= 1 : 0; 
+          console.log('points: ' + points);
+          console.log(event);
+          console.log(lastCollision);
+          lastCollision = engine.timing.timestamp;
+        }
         playfield.newBall(35 + ((Math.sin(engine.timing.timestamp * 0.002) + 1) * 150));
       }
     }
   });
 });
 
+
+function gotoFinish(engine, render, runner, points) {
+  Engine.clear(engine);
+  Render.stop(render)
+  Runner.stop(runner);
+  render.canvas.remove();
+  var canvas = document.createElement('canvas');
+  canvas.setAttribute('width', 370);
+  canvas.setAttribute('height', 620);
+  canvas.setAttribute('style', 'background-color: #191919');
+
+  document.body.appendChild(canvas);
+  const ctx = canvas.getContext("2d");
+
+  ctx.font = "50px Arial";
+  ctx.fillStyle = 'white';
+  ctx.fillText("Voitit!!", width/5, height/2); 
+
+  function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
+
+  sleep(2000).then(() => { ctx.fillText('Pisteet: ' + points, width/7, height/2 + 150); });
+}
+
 // Ball hits goal
 Events.on(engine, 'collisionStart', function (event) {
   event.source.pairs.collisionStart.forEach((element) => {
-    console.log(element);
     if (element.bodyA.label == 'ball' || element.bodyB.label == 'ball') {
       if (element.bodyA.label == 'goal' || element.bodyB.label == 'goal') {
         // do actions: move to next playField or quit game
+        points += 15;
         playfield.newBall(35 + ((Math.sin(engine.timing.timestamp * 0.002) + 1) * 150));
         stage +=1;
-        Matter.Composite.clear(engine.world);
-        playfield = playfields[stage](engine);
+        if (stage >= playfields.length){
+          gotoFinish(engine, render, runner, points);
+        } else {
+          Matter.Composite.clear(engine.world);
+          playfield = playfields[stage](engine);
+        }
       }
     }
   });
