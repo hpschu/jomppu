@@ -10,6 +10,11 @@ class HarderField extends PlayField {
         var bar = Bodies.rectangle(200, 400, 10, 120, this.barrierOptions);
         var block = Bodies.polygon(324, 423, 6, 8, this.barrierOptions);
         Matter.Body.rotate(bar, 45);
-        Matter.Composite.add(this.engine.world, [this.ground, this.leftBorder, this.rightBorder, this.topBorder, this.endCup.body, this.ball.body, bar, block]);
+        Matter.Composite.add(this.engine.world, [
+            this.endCup.body,
+            this.ball.body,
+            bar,
+            block
+        ]);
     }
 }

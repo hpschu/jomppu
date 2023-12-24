@@ -29,10 +29,6 @@ class MoveField extends PlayField {
             [
                 this.ball.body,
                 this.endCup.body,
-                this.rightBorder,
-                this.leftBorder,
-                this.ground,
-                this.topBorder,
                 moveBall,
                 moveBall2,
                 moveBall3

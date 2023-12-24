@@ -36,12 +36,13 @@ class IntroField extends PlayField {
 
         Matter.Composite.add(this.engine.world,
             [
-                this.ground,
-                this.leftBorder,
-                this.rightBorder,
-                this.topBorder, 
+//                this.ground,
+//               this.leftBorder,
+//                this.rightBorder,
+//                this.topBorder, 
                 this.endCup.body,
                 this.ball.body,
+//                this.spikes,
                 arrow,
                 arrow2
             ]

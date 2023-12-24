@@ -14,7 +14,6 @@ var height = 620;
 // create an engine
 var engine = Engine.create();
 
-
 // create a renderer
 var render = Render.create({
   element: document.body,
@@ -31,6 +30,7 @@ var playfields = [
   function (engine) {return new HarderField(engine)},
   function (engine) {return new PingPongField(engine)},
   function (engine) {return new MoveField(engine)},
+  function (engine) {return new FlipperField(engine)},
 ];
 let stage = 0;
 let playfield = playfields[stage](engine);

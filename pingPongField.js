@@ -12,23 +12,19 @@ class PingPongField extends PlayField {
             [
                 this.ball.body,
                 this.endCup.body,
-                this.rightBorder,
-                this.leftBorder,
-                this.ground,
-                this.topBorder,
-                Matter.Bodies.trapezoid(width/2, height/3, 5, 20, 1, this.barrierOptions),
+                Matter.Bodies.circle(width/2, height/3, 5, this.barrierOptions),
                
-                Matter.Bodies.trapezoid(width/3, height/3 + 50, 5, 20, 1, this.barrierOptions),
-                Matter.Bodies.trapezoid(width - width/3, height/3 + 50, 5, 20, 1, this.barrierOptions),
+                Matter.Bodies.circle(width/3, height/3 + 50, 5, this.barrierOptions),
+                Matter.Bodies.circle(width - width/3, height/3 + 50, 5, this.barrierOptions),
                 
-                Matter.Bodies.trapezoid(width/3, height/3 + 100, 5, 20, 1, this.barrierOptions),
-                Matter.Bodies.trapezoid(width - width/3, height/3 + 100, 5, 20, 1, this.barrierOptions),
+                Matter.Bodies.circle(width/3, height/3 + 100, 5, this.barrierOptions),
+                Matter.Bodies.circle(width - width/3, height/3 + 100, 5, this.barrierOptions),
 
-                Matter.Bodies.trapezoid(width/2, height/3 + 150, 5, 20, 1, this.barrierOptions),
+                Matter.Bodies.circle(width/2, height/3 + 150, 5, this.barrierOptions),
 
-                Matter.Bodies.trapezoid(width/2, height/3 + 200, 5, 20, 1, this.barrierOptions),
+                Matter.Bodies.circle(width/2, height/3 + 200, 5, this.barrierOptions),
 
-                Matter.Bodies.trapezoid(width/2, height/3 + 250, 5, 20, 1, this.barrierOptions),
+                Matter.Bodies.circle(width/2, height/3 + 250, 5, this.barrierOptions),
             ]
         );
     }
