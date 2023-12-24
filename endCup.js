@@ -1,5 +1,5 @@
 class EndCup {
-    constructor (x, y, scale = 1) {
+    constructor (x, y, scale = 1.1) {
         var palette = {render: {strokeStyle: 'white', lineWidth: 1, fillStyle: "#E3651D"}};
         this.leftSide = Matter.Bodies.rectangle(x, y, 5*scale, 50*scale, palette);
         this.rightSide = Matter.Bodies.rectangle(x+50*scale, y, 5*scale, 50*scale, palette);

@@ -1,7 +1,6 @@
 class HarderField extends PlayField {
     constructor(engine) {
         super(engine);
-
         this.startPosX = 35;
         this.startPosY = 50;
         this.ballRadius = 20;

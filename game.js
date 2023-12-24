@@ -31,6 +31,7 @@ var playfields = [
   function (engine) {return new PingPongField(engine)},
   function (engine) {return new MoveField(engine)},
   function (engine) {return new FlipperField(engine)},
+  function (engine) {return new BounceField(engine)},
 ];
 let stage = 0;
 let playfield = playfields[stage](engine);
